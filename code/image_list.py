@@ -9,23 +9,32 @@ import numpy as np
 
 def pil_loader(path):
     # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
-    with open(path, 'rb') as f:
+    with open(path, "rb") as f:
         img = Image.open(f)
-        return img.convert('RGB')
+        return img.convert("RGB")
 
 
 class ImageList(object):
-    def __init__(self, root=None, transform=None, strong_transform=None, target_transform=None, empty=False,
-                 test=False):
+    def __init__(
+        self,
+        root=None,
+        transform=None,
+        strong_transform=None,
+        target_transform=None,
+        empty=False,
+        test=False,
+    ):
         self.transform = transform
         self.strong_transform = strong_transform
         self.target_transform = target_transform
         self.empty = empty
         self.test = test
         if self.empty:
-            self.samples = np.empty((1, 2), dtype=np.dtype((np.unicode_, 1000)))
+            self.samples = np.empty((1, 2), dtype=np.dtype((np.str_, 1000)))
         else:
-            self.samples = np.loadtxt(root, dtype=np.dtype((np.unicode_, 1000)), delimiter=' ')
+            self.samples = np.loadtxt(
+                root, dtype=np.dtype((np.str_, 1000)), delimiter=" "
+            )
         self.loader = pil_loader
 
     def __getitem__(self, index):
