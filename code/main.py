@@ -42,6 +42,8 @@ if __name__ == '__main__':
     parser.add_argument('--m', type=float, default=0.999)
     parser.add_argument('--ema', type=float, default=0.9)
     parser.add_argument('--method', type=str, default='rasc')
+    parser.add_argument('--CPR',type=bool,default=True)
+    
     args = parser.parse_args()
 
     ''' Fix seed '''

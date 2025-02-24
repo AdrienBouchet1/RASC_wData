@@ -29,7 +29,7 @@ class RASC(object):
         self.args = args
 
         self.T = self.args.cont_t
-
+        self.CPR=self.args.CPR
         self.define_dataset()
         self.define_loader()
 
@@ -485,13 +485,20 @@ class RASC(object):
             index = list()
             active_sum = 0
             candicate_ds_index = list()
+            
             for i in range(len(stat)):
                 if active_sum == self.num_anno:
                     break
-                if np.random.random() >= class_difficulty[stat[i, 6, ...].item()]:
+                if self.CPR : 
+                    if np.random.random() >= class_difficulty[stat[i, 6, ...].item()]:
+                        candicate_ds_index.append(stat[i, 2, ...])
+                        index.append(i)
+                        active_sum = active_sum + 1
+                else : 
                     candicate_ds_index.append(stat[i, 2, ...])
                     index.append(i)
                     active_sum = active_sum + 1
+                    
             active_samples = stat[index, 0:3, ...]
 
             print("len_active_sample = {}".format(len(index)))
