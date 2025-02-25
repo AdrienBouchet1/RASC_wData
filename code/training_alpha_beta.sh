@@ -15,7 +15,7 @@ CLASS_NUM=31
 
 
 
-alpha=(0.1,0.3,0.5,0.7,0.9)
+alpha=(0.1 0.3 0.5 0.7 0.9)
 
 for a in "${alpha[@]}"; do
     OUTPUT_FILE="training_budget_${a}.txt"
@@ -37,7 +37,7 @@ done
 
 
 
-beta=(0.1,0.3,0.5,0.7,0.9)
+beta=(0.1 0.3 0.5 0.7 0.9)
 
 for b in "${beta[@]}"; do
     OUTPUT_FILE="training__beta_${b}.txt"
