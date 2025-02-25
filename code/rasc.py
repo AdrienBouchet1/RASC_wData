@@ -648,6 +648,7 @@ class RASC(object):
                 self.update_plt(epoch)
             self.train_one_epoch(epoch)
             self.test()
+            torch.save(self.model, osp.join(self.args.save_model_path, "train_model.pth.tar"))
 
     def pre_train(self):
         self.optim.zero_grad()

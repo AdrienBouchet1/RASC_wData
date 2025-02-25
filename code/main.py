@@ -15,6 +15,10 @@ import random
 import torch
 import rasc
 
+
+os.chdir("/content/")
+
+
 if __name__ == '__main__':
     # Training settings
     parser = argparse.ArgumentParser(description='PyTorch Example')
@@ -55,7 +59,7 @@ if __name__ == '__main__':
     torch.cuda.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
 
-    args.save_model_path = "checkpoint/" + args.s + args.t
+    args.save_model_path = "/content/checkpoint/" + args.s + args.t
     if not osp.exists(args.save_model_path):
         os.system('mkdir -p ' + args.save_model_path)
     if not osp.exists(args.save_model_path):
