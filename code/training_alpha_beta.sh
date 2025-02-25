@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-mkdir /content/checkpoint && cp /content/drive/MyDrive/pre_train_model.pth.tar /content/checkpoint/pre_train_model.pth.tar 
+mkdir /content/checkpoint && mkdir /content/checkpoint/webcamamazon && cp /content/drive/MyDrive/pre_train_model.pth.tar /content/checkpoint/pre_train_model.pth.tar 
 
 
 LR=0.01
@@ -18,7 +18,7 @@ CLASS_NUM=31
 alpha=(0.1 0.3 0.5 0.7 0.9)
 
 for a in "${alpha[@]}"; do
-    OUTPUT_FILE="training_budget_${a}.txt"
+    OUTPUT_FILE="training_alpha_${a}.txt"
     echo "Running training with alpha=${a}, output -> ${OUTPUT_FILE}"
 
     python3 main.py --lr ${LR} \
