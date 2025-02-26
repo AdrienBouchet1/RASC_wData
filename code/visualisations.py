@@ -6,7 +6,7 @@ Created on Tue Feb 25 13:49:09 2025
 @author: bouchet
 """
 
-from plotnine import ggplot, aes, geom_line,labs
+from plotnine import ggplot, aes, geom_line,labs,ylim,geom_point,scale_x_continuous
 import pandas as pd 
 
 
@@ -39,7 +39,24 @@ plot2=(ggplot(df2,aes(x="B", y="Val" ))
       )
 
 
-print(plot)
-print(plot2)
+# print(plot)
+# print(plot2)
 
 
+
+
+def plot3(df : pd.DataFrame) :
+            
+        plot2=(ggplot(df,aes(x="alpha", y="acc" ))
+              
+              + geom_line(color="blue") 
+              + geom_point(shape='x', color="blue")
+              + ylim(75,82)
+              + scale_x_continuous(breaks=[0.1, 0.3, 0.5, 0.7, 0.9]) 
+                + labs(title=r"Performances d'entrainement en fonction de alpha",
+                       x="alpha", 
+                       y="accuracy (%) (à epoch=5)", 
+                       )  # Titre de la légende
+              )
+        print(plot2)
+        

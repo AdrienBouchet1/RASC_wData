@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-mkdir /content/checkpoint && mkdir /content/checkpoint/webcamamazon && cp /content/drive/MyDrive/pre_train_model.pth.tar /content/checkpoint/pre_train_model.pth.tar 
+mkdir /content/checkpoint && mkdir /content/checkpoint/webcamamazon && cp /content/drive/MyDrive/pre_train_model.pth.tar /content/checkpoint/webcamamazon//pre_train_model.pth.tar 
 
 
 LR=0.01
