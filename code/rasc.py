@@ -32,7 +32,7 @@ class RASC(object):
         self.CPR=self.args.CPR
         self.define_dataset()
         self.define_loader()
-
+        
         self.sampling_epochs = [0, 2, 4, 6, 8]
         # VisDA and MiniDomainNet
         # self.sampling_epochs = [0, 1, 2, 3, 4]
@@ -355,9 +355,9 @@ class RASC(object):
                 cont_loss_t = (-1.0 * (torch.log(pos / (pos + neg)))).mean()
 
                 loss = loss_s + loss_lt + self.args.cont_loss_weight1 * (
-                        cont_loss_s + cont_loss_lt + cont_loss_reg) + self.args.cont_loss_weight2 * cont_loss_t
+                    cont_loss_s + cont_loss_lt + (self.args.gamma*cont_loss_reg))  + self.args.cont_loss_weight2 * cont_loss_t
             else:
-                loss = loss_s + loss_lt + self.args.cont_loss_weight1 * (cont_loss_s + cont_loss_lt + cont_loss_reg)
+                loss = loss_s + loss_lt + self.args.cont_loss_weight1 * (cont_loss_s + cont_loss_lt +(self.args.gamma*cont_loss_reg))
 
             loss.backward()
             self.optim.step()

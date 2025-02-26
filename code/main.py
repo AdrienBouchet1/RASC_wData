@@ -47,7 +47,8 @@ if __name__ == '__main__':
     parser.add_argument('--ema', type=float, default=0.9)
     parser.add_argument('--method', type=str, default='rasc')
     parser.add_argument('--CPR',type=bool,default=True)
-    
+    parser.add_argument('--gamma',type=float,default=1,help='régler la loss')
+   
     args = parser.parse_args()
 
     ''' Fix seed '''
